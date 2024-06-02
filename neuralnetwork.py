@@ -100,7 +100,8 @@ class Neuron:
         return {
             "s": [synapse.to_json() for synapse in self.synapses],
             "f": self.function,
-            "b": self.bias
+            "b": self.bias,
+            "a": self.activation,
         }
 
 

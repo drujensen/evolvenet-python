@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 def main():
     nn = NeuralNetwork()
     nn.add_layer("input", size=2)
-    nn.add_layer("hidden", size=2)
+    nn.add_layer("hidden", size=4)
     nn.add_layer("output", size=1)
     nn.fully_connect()
 
@@ -22,7 +22,9 @@ def main():
     ]
 
     organism = Organism(nn)
-    network = organism.evolve(data)
+    network = organism.evolve(data, generations=1000)
+
+    print(network.to_json())
 
     logging.info(f"Final error: {network.error}")
     confusion_matrix(network, data)
